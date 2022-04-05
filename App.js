@@ -9,20 +9,29 @@ function HomeScreen({navigation}) {
   console.log('Homescreen', navigation);
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text onPress={() => navigation.navigate('Details')}>Home Screen</Text>
+      <Text
+        onPress={() =>
+          navigation.navigate('Details', {id: 1, Name: 'Reeturaj'})
+        }>
+        Home Screen
+      </Text>
       <Text onPress={() => navigation.navigate('Services')}>
         Detail Screen Again
       </Text>
     </View>
   );
 }
-function DetailsScreen({navigation}) {
+function DetailsScreen({route, navigation}) {
   console.log('detail', DetailsScreen);
+  const {id, Name} = route.params;
+  console.log('route', route);
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text onPress={() => navigation.navigate('Services')}>
         Details Screen
       </Text>
+      <Text> Item : {id}</Text>
+      <Text>Name : {Name}</Text>
     </View>
   );
 }
@@ -33,6 +42,7 @@ function Services({navigation}) {
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text onPress={() => navigation.navigate('Details')}>Services</Text>
       {/* <Text onPress={() => navigation.goBack()}>Details Screen Again</Text> */}
+      <Text>Hiii</Text>
     </View>
   );
 }
